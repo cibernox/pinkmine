@@ -11,7 +11,8 @@ describe Issue do
   # Callbacks
   #
   describe 'Callbacks' do
-    it "should initialize its code to the next code in the project unless it has one" do
+    it "should initialize its code to the next code in the project unless it has one", :focus => true do
+      debugger
       project = Project.new.stub issues: [double(code: '009'), double(code: '007')]
       issue = Issue.new project: project
       issue.code.should == '010'

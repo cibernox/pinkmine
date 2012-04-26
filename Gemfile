@@ -22,6 +22,7 @@ end
 
 gem 'jquery-rails'
 gem "haml-rails"
+gem 'pry'
 
 group :development do
   gem 'foreigner'
@@ -30,13 +31,10 @@ group :development do
   gem 'guard-rspec'
 end
 
-group :test do
-  gem "shoulda-matchers"
-end
-
 group :test, :development do
   gem "rspec-rails"
   gem 'factory_girl'
+  gem "shoulda-matchers"
 end
 
 # To use ActiveModel has_secure_password

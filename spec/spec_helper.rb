@@ -31,18 +31,6 @@ end
 
 Spork.each_run do
 
-  # I18n.backend.reload!
-
-  # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
-  # require 'factory_girl'
-
-  # FactoryGirl.definition_file_paths = [
-  #         File.join(Rails.root, 'spec', 'factories')
-  # ]
-
-  # FactoryGirl.find_definitions
-
 end
 
 
