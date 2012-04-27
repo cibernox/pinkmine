@@ -5,12 +5,26 @@ class Issue < ActiveRecord::Base
   # Relations
   #
   belongs_to :project
+  belongs_to :responsable, class_name: 'User'
 
   #
   # Callbacks
   #
-  def after_initialize
-    self.code ||= (project.issues.maximum(:code) || 0).succ
+  before_validation :set_next_code
+
+  #
+  # Validations
+  #
+  validates :title,   presence: true
+  validates :code,    presence: true, numericality: { greater_than: 0 }
+  validates :project, presence: true
+
+  #
+  # Instance metods
+  #
+  private
+  def set_next_code
+    self.code = project ? project.highest_code.succ : '1' if self.code.blank?
   end
 
 end

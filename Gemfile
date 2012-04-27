@@ -25,13 +25,13 @@ gem "haml-rails"
 gem 'pry'
 
 group :development do
-  gem 'foreigner'
   gem "debugger"
   gem 'guard-spork'
   gem 'guard-rspec'
 end
 
 group :test, :development do
+  gem 'foreigner'
   gem "rspec-rails"
   gem 'factory_girl'
   gem "shoulda-matchers"
