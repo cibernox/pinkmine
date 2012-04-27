@@ -1,7 +1,12 @@
 class Issue < ActiveRecord::Base
-  attr_accessible :title, :code, :desciption, :project, :status, :percentage
+  attr_accessible :title, :code, :description, :project, :status, :percentage
   include WithResponsable
   include WithCreator
+
+  #
+  # Constants
+  #
+  VALID_STATUS = %w( new in_progress resolved feedback closed rejected )
 
   #
   # Relations
@@ -16,10 +21,11 @@ class Issue < ActiveRecord::Base
   #
   # Validations
   #
-  validates :title,   presence: true
-  validates :code,    presence: true, numericality: { greater_than: 0 }
-  validates :project, presence: true
-
+  validates :title,       presence: true
+  validates :code,        presence: true, numericality: { greater_than: 0 }
+  validates :project,     presence: true
+  validates :status,      inclusion: { in: VALID_STATUS }
+  validates :percentage,  inclusion: { in: 0..100 }
   #
   # Instance metods
   #

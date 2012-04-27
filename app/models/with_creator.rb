@@ -1,6 +1,7 @@
 module WithCreator
 
   def self.included(base)
+    base.attr_accessible :creator
     #
     # Relations
     #

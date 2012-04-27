@@ -1,6 +1,7 @@
 module WithResponsable
 
   def self.included(base)
+    base.attr_accessible :responsable
     #
     # Relations
     #

@@ -30,6 +30,13 @@ describe Issue do
     end
     # project
     it { should validate_presence_of :project }
+    # status
+    it "should validate that the state is one of the list of valid statates" do
+      subject.class::VALID_STATUS.each { |status| subject.should allow_value(status).for(:status) }
+      subject.should_not allow_value('abcd').for(:status)
+    end
+    # Percentage
+    it { should ensure_inclusion_of(:percentage).in_range(0..100) }
   end
 
   #

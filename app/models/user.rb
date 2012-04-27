@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # Relations
   #
   has_many :created_projects, class_name: 'Project', foreign_key: 'creator_id'
-  has_many :created_issues, class_name: 'Issue', foreign_key: 'creator_id'
+  has_many :created_issues,   class_name: 'Issue',   foreign_key: 'creator_id'
 
   #
   # Validations
