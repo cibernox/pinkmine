@@ -22,9 +22,9 @@ end
 
 gem 'jquery-rails'
 gem "haml-rails"
-gem 'pry'
 
 group :development do
+  gem 'pry-rails'
   gem "debugger"
   gem 'guard-spork'
   gem 'guard-rspec'

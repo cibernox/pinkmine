@@ -1,13 +1,13 @@
 describe Project do
   let(:saved_project){ Project.create }
   
+  it_behaves_like "an object with responsable"
+  it_behaves_like "an object with creator"
+  
   #
   # Relations
   #
-  it { should belong_to :creator }
-  it { should have_many :issues  }
-  # it { should have_many :contributors }
-  # it { should have_many :branchs }
+  it { should have_many :issues }
 
   #
   # Validations

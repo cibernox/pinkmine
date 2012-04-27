@@ -1,11 +1,10 @@
 describe Issue do
-  
+  it_behaves_like "an object with responsable"
+  it_behaves_like "an object with creator"
   #
   # Relations
   #
   it { should belong_to :project }
-  it { should belong_to :responsable }
-  # it { should belong_to :branch }
 
   #
   # Callbacks
@@ -54,6 +53,18 @@ describe Issue do
         subject.project = project
         expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('11')
       end
+  end
+
+  it 'should be assigned to an user if that user is its responsable' do
+    user = User.new login: 'Miguel'
+    subject.responsable = user
+    subject.should be_assigned_to user
+  end
+
+  it 'should be created by an user if that user is its creator' do
+    user = User.new login: 'Miguel'
+    subject.creator = user
+    subject.should be_created_by user
   end
 
 end

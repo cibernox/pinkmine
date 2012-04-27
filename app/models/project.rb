@@ -1,12 +1,12 @@
 class Project < ActiveRecord::Base
   attr_accessible :name
+  include WithResponsable
+  include WithCreator
 
   #
   # Relations
   #
-  belongs_to :creator, class_name: 'User'
   has_many :issues
-
 
   #
   # Validations
