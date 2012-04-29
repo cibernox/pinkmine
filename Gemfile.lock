@@ -52,6 +52,9 @@ GEM
       multi_json (~> 1.0)
     factory_girl (3.2.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (3.2.0)
+      factory_girl (~> 3.2.0)
+      railties (>= 3.0.0)
     ffi (1.0.11)
     foreigner (1.1.6)
       activerecord (>= 3.0.0)
@@ -71,6 +74,17 @@ GEM
       railties (~> 3.0)
     hike (1.2.1)
     i18n (0.6.0)
+    ipsum (2.0.0)
+      ipsum-english (>= 1.1.0)
+      ipsum-french (>= 1.1.0)
+      ipsum-latin (>= 1.1.0)
+    ipsum-core (2.0.0)
+    ipsum-english (1.1.0)
+      ipsum-core (>= 2.0.0)
+    ipsum-french (1.1.0)
+      ipsum-core (>= 2.0.0)
+    ipsum-latin (1.1.0)
+      ipsum-core (>= 2.0.0)
     journey (1.0.3)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -158,11 +172,12 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
-  factory_girl
+  factory_girl_rails
   foreigner
   guard-rspec
   guard-spork
   haml-rails
+  ipsum
   jquery-rails
   pry-rails
   rails (= 3.2.3)

@@ -1,17 +1,39 @@
 describe Issue do
+
   it_behaves_like "an object with responsable"
   it_behaves_like "an object with creator"
+
+  #
+  # Factories
+  #
+  let(:user){ create :user }
+  let(:project){ create :project, creator: user }
+
   #
   # Relations
   #
   it { should belong_to :project }
 
   #
+  # Scopes
+  #
+  describe 'Scopes' do
+    it '#open should return any issue not closed nor rejected' do
+      closed_issue = create :issue, creator: user, project: project, status: 'closed'
+      rejected_issue = create :issue, creator: user, project: project, status: 'rejected'
+      open_issues = Issue.open
+      open_issues.should_not include(closed_issue)
+      open_issues.should_not include(rejected_issue)
+    end
+  end
+
+  #
   # Callbacks
   #
   describe 'Callbacks' do
-    it '#before_validation should set the code to the next one' do
+    it '#before_validation should set the code to the next one and initialize the percentage' do
       subject.should_receive(:set_next_code).once
+      subject.should_receive(:initialize_percentage).once
       subject.valid?
     end
   end
@@ -42,36 +64,36 @@ describe Issue do
   #
   # Instance methods
   #
-  describe '#initialize_to_next_code' do
-      let(:project) { Project.new }
-      it "should init its code to one if it dont has project" do
-        expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('1')
-      end
-      it "should init its code to one if its project doesn't have issues yet" do
-        subject.project = project
-        expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('1')
-      end
-      it "should not change its code if it already has one" do
-        subject.code = '5'
-        expect { subject.send :set_next_code }.not_to change(subject, :code)
-      end
-      it 'should init its code to the successor of the highest code among the issues of its project' do
-        project.stub highest_code: '10'
-        subject.project = project
-        expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('11')
-      end
+  describe '#set_next_code' do
+    let(:project) { Project.new }
+    it "should init its code to one if it dont has project" do
+      expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('1')
+    end
+    it "should init its code to one if its project doesn't have issues yet" do
+      subject.project = project
+      expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('1')
+    end
+    it "should not change its code if it already has one" do
+      subject.code = '5'
+      expect { subject.send :set_next_code }.not_to change(subject, :code)
+    end
+    it 'should init its code to the successor of the highest code among the issues of its project' do
+      project.stub highest_code: '10'
+      subject.project = project
+      expect { subject.send :set_next_code }.to change(subject, :code).from(nil).to('11')
+    end
+  end
+  it '#initialize_percentage' do
+    expect { subject.send :initialize_percentage }.to change(subject, :percentage).from(nil).to(0)
   end
 
-  it 'should be assigned to an user if that user is its responsable' do
-    user = User.new login: 'Miguel'
-    subject.responsable = user
-    subject.should be_assigned_to user
-  end
-
-  it 'should be created by an user if that user is its creator' do
-    user = User.new login: 'Miguel'
-    subject.creator = user
-    subject.should be_created_by user
+  it '#open? should be true unless the status is closed or rejected' do
+    subject.status = 'resolved'
+    subject.should be_open
+    subject.status = 'closed'
+    subject.should_not be_open
+    subject.status = 'rejected'
+    subject.should_not be_open
   end
 
 end

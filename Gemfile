@@ -21,20 +21,21 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem "haml-rails"
+gem 'haml-rails'
 
 group :development do
   gem 'pry-rails'
-  gem "debugger"
+  gem 'debugger'
   gem 'guard-spork'
   gem 'guard-rspec'
 end
 
 group :test, :development do
   gem 'foreigner'
-  gem "rspec-rails"
-  gem 'factory_girl'
-  gem "shoulda-matchers"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'ipsum'
 end
 
 # To use ActiveModel has_secure_password

@@ -20,6 +20,7 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.use_transactional_fixtures = true
+    config.include FactoryGirl::Syntax::Methods
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -30,7 +31,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
-
+  FactoryGirl.reload
 end
 
 
