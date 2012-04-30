@@ -11,7 +11,8 @@ FactoryGirl.define do
   # Factories
   #
   factory :user, aliases: [:creator, :responsable] do
-    login "Johny"
+    username "Johny"
+    email "email@test.com"
     password "123123"
   end
 

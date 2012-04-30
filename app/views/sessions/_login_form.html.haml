@@ -1,0 +1,14 @@
+- remote ||= false
+= form_for User.new, :url => sessions_path, remote: remote, html: { class: 'form-horizontal', id: 'loginForm' } do |f|
+
+  %fieldset
+    .control-group
+      = f.label :username, class: 'control-label'
+      .controls= f.text_field :username, class: 'input-xlarge', placeholder: username_placeholder
+    .control-group
+      = f.label :password, class: 'control-label'
+      .controls= f.password_field :password, class: 'input-xlarge'
+  .text-center
+    = f.submit 'Enviar', class: 'btn btn-primary'
+  .text-right.margin-1em.subindex
+    ¿No recuerdas tus datos? Entra #{ link_to 'aquí', '#' }

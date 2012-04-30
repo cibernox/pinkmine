@@ -11,11 +11,7 @@
           %h2 &nbsp;&nbsp;&nbsp;&nbsp; Regístrate ya &nbsp;&nbsp;&nbsp;&nbsp;
       .row-fluid.text-center
         O haz #{ link_to 'login', '#loginModal', 'data-toggle' => 'modal' } si ya estas registrado
-        #loginModal.modal.hide.fade
-          .modal-header
-            %button.close{ 'data-dismiss' => 'modal'} ×
-            %h3 Login
-          .modal-body= render 'login_form'
+      #loginModal.modal.hide.fade= render 'login_modal'
 
 .row-fluid
   .span3

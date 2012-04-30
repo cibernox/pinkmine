@@ -24,14 +24,17 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'decent_exposure'
+gem 'bcrypt-ruby'
 gem 'sorcery'
 gem 'email_validator'
+gem 'thin-rails'
 
 group :development do
   gem 'pry-rails'
   gem 'debugger'
   gem 'guard-spork'
   gem 'guard-rspec'
+  gem 'quiet_assets'
 end
 
 group :test, :development do

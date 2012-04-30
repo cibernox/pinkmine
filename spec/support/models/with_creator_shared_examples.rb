@@ -14,7 +14,7 @@ shared_examples_for "an object with creator" do
   # Instance methods
   #
   it 'should be created by an user if that user is its creator' do
-    user = User.new login: 'Miguel'
+    user = User.new username: 'Miguel'
     subject.creator = user
     subject.should be_created_by user
   end
