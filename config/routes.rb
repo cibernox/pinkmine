@@ -1,8 +1,15 @@
 Pinkmine::Application.routes.draw do
-  resources :users
+  get "logout" => "sessions#destroy", as: "logout"
+  get "login"  => "sessions#new",     as: "login"
+  get "signup" => "users#new",        as: "signup"
 
-  resources :issues
-  resources :projects
+  resources :users
+  resources :sessions
+  resources :projects do
+    resources :issues
+  end
+
+  root to: 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

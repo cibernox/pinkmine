@@ -1,29 +1,29 @@
 class ProjectsController < ApplicationController
 
-  def index
-    @projects = Project.all
+  #
+  # Decent exposure
+  #
+  expose(:projects) { Project.all }
+  expose(:project)
 
+  def index
     respond_to do |format|
       format.html
-      format.json { render json: @projects }
+      format.json { render json: projects }
     end
   end
 
   def show
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html
-      format.json { render json: @project }
+      format.json { render json: project }
     end
   end
 
   def new
-    @project = Project.new
-
     respond_to do |format|
       format.html
-      format.json { render json: @project }
+      format.json { render json: project }
     end
   end
 

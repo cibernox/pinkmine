@@ -21,7 +21,7 @@ describe Issue do
     it '#open should return any issue not closed nor rejected' do
       closed_issue = create :issue, creator: user, project: project, status: 'closed'
       rejected_issue = create :issue, creator: user, project: project, status: 'rejected'
-      open_issues = Issue.open
+      open_issues = project.issues.opened
       open_issues.should_not include(closed_issue)
       open_issues.should_not include(rejected_issue)
     end
@@ -87,13 +87,13 @@ describe Issue do
     expect { subject.send :initialize_percentage }.to change(subject, :percentage).from(nil).to(0)
   end
 
-  it '#open? should be true unless the status is closed or rejected' do
+  it '#opened? should be true unless the status is closed or rejected' do
     subject.status = 'resolved'
-    subject.should be_open
+    subject.should be_opened
     subject.status = 'closed'
-    subject.should_not be_open
+    subject.should_not be_opened
     subject.status = 'rejected'
-    subject.should_not be_open
+    subject.should_not be_opened
   end
 
 end

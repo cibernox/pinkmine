@@ -17,17 +17,11 @@ describe User do
   #
   describe 'Validations' do
     # login
-    it { should validate_presence_of :login }
-    it "should validate that the login has between 5 and 20 chars" do
-      subject.should_not allow_value('aaaa').for(:login)
-      subject.should allow_value('aaaaa').for(:login)
-      subject.should_not allow_value('aaaaaaaaaaaaaaaaaaaaa').for(:login)
-    end
-    # password
-    it "should validate that the password has between 5 and 20 chars" do
-      subject.should_not allow_value('aaaa').for(:password)
-      subject.should allow_value('aaaaa').for(:password)
-      subject.should_not allow_value('aaaaaaaaaaaaaaaaaaaaa').for(:password)
+    it { should validate_presence_of :username }
+    it "should validate that the username has between 5 and 20 chars" do
+      subject.should_not allow_value('aaaa').for(:username)
+      subject.should allow_value('aaaaa').for(:username)
+      subject.should_not allow_value('aaaaaaaaaaaaaaaaaaaaa').for(:username)
     end
   end
 

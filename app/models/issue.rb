@@ -19,7 +19,7 @@ class Issue < ActiveRecord::Base
   VALID_STATUS.each do |status|
     scope :"#{status}", where(status: status)
   end
-  scope :open, where(status: %w( unstarted in_progress resolved feedback ))
+  scope :opened, where(status: %w( unstarted in_progress resolved feedback ))
 
   #
   # Callbacks
@@ -39,7 +39,7 @@ class Issue < ActiveRecord::Base
   #
   # Instance metods
   #
-  def open?
+  def opened?
     %w( unstarted in_progress resolved feedback ).include?(status)
   end
 
