@@ -2,6 +2,8 @@ Pinkmine::Application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   get "login"  => "sessions#new",     as: "login"
   get "signup" => "users#new",        as: "signup"
+  get "welcome" => "welcome#welcome", as: "welcome"
+  get "my_profile" => "users#my_profile", as: "my_profile"
 
   resources :users
   resources :sessions

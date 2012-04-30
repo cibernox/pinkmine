@@ -1,0 +1,33 @@
+.row-fluid
+  .span3
+    .well.sidebar-nav
+      %ul.nav.nav-tabs.nav-stacked
+        %li.nav-header Mis datos
+        %li.active= link_to 'Cuenta', '#account', icon: 'user', 'data-toggle' => "tab"
+        %li= link_to 'Datos personales', '#personal', icon: 'book', 'data-toggle' => "tab"
+        %li= link_to 'Asociaciones', '#associations', icon: 'home', 'data-toggle' => "tab"
+        %li= link_to 'Alertas', '#alerts', icon: 'envelope', 'data-toggle' => "tab"
+        %li.nav-header Seguridad
+        %li= link_to 'RSS Keys', '#rss', icon: 'qrcode', 'data-toggle' => "tab"
+        %li= link_to 'API keys', '#api', icon: 'barcode', 'data-toggle' => "tab"
+  .span9
+    .tab-content
+      #account.tab-pane.active
+        %h2 Cuenta
+        .row
+          .span2 
+            %label Email
+          .span3 info@pinkmine.com
+          .span2
+            %label Otro dato
+          .span3 03/09/1986
+      #personal.tab-pane
+        %h2 Datos personales
+      #associations.tab-pane
+        %h2 Asociaciones
+      #alerts.tab-pane
+        %h2 Alertas
+      #rss.tab-pane
+        %h2 RSS
+      #api.tab-pane
+        %h2 API

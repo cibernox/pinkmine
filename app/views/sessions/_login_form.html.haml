@@ -1,8 +1,14 @@
 - remote ||= false
-= simple_form_for User.new, :url => sessions_path, remote: remote, html: { class: 'form-horizontal', id: 'loginForm' } do |f|
+= form_tag sessions_path, remote: remote, class: 'form-horizontal', id: 'loginForm' do |f|
+  = render 'login_error' if action_name == 'create'
   %fieldset
-    = f.input :username, input_html: { class: 'input-xlarge' }, placeholder: username_placeholder, required: false
-    = f.input :password, input_html: { class: 'input-xlarge' }, required: false
-    .text-center= f.button :submit, 'Enviar', class: 'btn-primary'
+    .control-group
+      = label_tag :username, 'Username', class: 'control-label'
+      .controls= text_field_tag :username, nil, class: 'input-xlarge', placeholder: username_placeholder
+    .control-group
+      = label_tag :password, 'Password', class: 'control-label'
+      .controls= password_field_tag :password, nil, class: 'input-xlarge'
+    .text-center
+      = submit_tag 'Enviar', class: 'btn btn-primary', disable_with: "Enviando..."
   .text-right.margin-1em.subindex
     ¿No recuerdas tus datos? Entra #{ link_to 'aquí', '#' }

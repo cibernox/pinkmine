@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  #
+  # Filters
+  #
+  before_filter :require_login
+  skip_before_filter :require_login, :only => [:new, :create]
 
   #
   # Decent exposure
@@ -7,11 +12,12 @@ class UsersController < ApplicationController
   expose(:user)
 
   def new
-    render :new, layout: 'welcome'
   end
 
   def create
     if user.save
+      auto_login(user)
+      flash.now.alert = "Email or password was invalid."
       redirect_to root_url, :notice => "Signed up!"
     else
       render :new

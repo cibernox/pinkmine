@@ -1,0 +1,43 @@
+.row-fluid
+  .span12
+    .hero-unit
+      %h1 Bienvenido a Pinkmine
+      %p.margin-1em
+        Pinkmine es la forma fácil se gestionar tus proyectos y el trabajo de tu equipo para la gente que
+        tiene mejores cosas que hacer.
+      %p Justo como tú.
+      .row-fluid.text-center.margin-1em
+        %a.btn.btn-primary.btn-large{ href: '/signup' }
+          %h2 &nbsp;&nbsp;&nbsp;&nbsp; Regístrate ya &nbsp;&nbsp;&nbsp;&nbsp;
+      .row-fluid.text-center
+        O haz #{ link_to 'login', '#loginModal', 'data-toggle' => 'modal' } si ya estas registrado
+      #loginModal.modal.hide.fade= render 'login_modal'
+
+.row-fluid
+  .span3
+    %h2 Tus equipos...
+    %p
+      Divide tus equipos para lograr optimizar su rendimiento. Con pinkmine tienes siempre bajo control
+      los recursos humanos de los que dispones, junto con las tareas que están realizando ahora mismo y
+      las que están planificadas despues.
+    %p= link_to 'Detalles', '#', class: 'btn'
+  .span3
+    %h2 Tus proyectos...
+    %p
+      Todos los proyectos tienen que acabar... a tiempo. Pinkmine te ofrece de un vistazo toda la
+      información del avance de cada proyecto, informes de velocidad y calendario de millestones.
+      Todo para que nunca las prisas te pillen por sorpresa.
+    %p= link_to 'Detalles', '#', class: 'btn'
+  .span3
+    %h2 Tus tareas...
+    %p
+      ¿Tienes tantas cosas que haces que no sabes ni por cuál empezar? Organiza tu trabajo de la forma más
+      natural y ágil posible.Gestión de prioridades, calendarios de entregas. Trabaja en lo que importa,
+      deja lo accesorio a un lado.
+    %p= link_to 'Detalles', '#', class: 'btn'
+  .span3
+    %h2 A tu modo
+    %p
+      Duis non nulla dui, vitae sollicitudin magna. Etiam nec massa eget turpis ultrices dapibus ac a sem. 
+      Phasellus rutrum vulputate nunc sed aliquam.
+    %p= link_to 'Detalles', '#', class: 'btn'
