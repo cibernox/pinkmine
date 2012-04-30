@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   expose(:user)
 
   def new
+    render :new, layout: 'welcome'
   end
 
   def create

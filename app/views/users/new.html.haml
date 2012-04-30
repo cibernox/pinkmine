@@ -1,22 +1,12 @@
-%h1 Sign Up
-
-= form_for user do |f|
-  - if user.errors.any?
-    .error_messages
-      %h2 Form is invalid
-      %ul
-        - user.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :username
-    = f.text_field :username
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :password
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  .actions= f.submit
+- remote ||= false
+.span6.offset3
+  = simple_form_for user, :url => sessions_path, html: { class: 'form-horizontal' } do |f|
+    %fieldset
+      %legend Registro
+      = f.input :username, input_html: { class: 'input-xlarge' }
+      = f.input :email, input_html: { class: 'input-xlarge' }
+      = f.input :password, input_html: { class: 'input-xlarge' }
+      = f.input :password_confirmation, input_html: { class: 'input-xlarge' }
+      .text-center= f.button :submit, 'Enviar', class: 'btn-primary'
+    .text-right.margin-1em.subindex
+      ¿Ya está registrado? Accede #{ link_to 'aquí', '#' }

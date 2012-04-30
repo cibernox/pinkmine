@@ -1,23 +1,27 @@
 class SessionsController < ApplicationController
+  layout 'welcome'
 
   def new
   end
 
   def create
     user = login(params[:email], params[:password], params[:remember_me])
-    if user
-      respond_to do |format|
-        format.html { redirect_back_or_to root_url, notice: "Logged in!" }
-        format.js   { render action: :redirect }
-      end
-    else
-      respond_to do |format|
-        format.html do
+    respond_to do |format|
+      format.html do
+        if user
+          redirect_back_or_to root_url, notice: "Logged in!"
+        else
           flash.now.alert = "Email or password was invalid."
           render :new
         end
-        format.js
-      end      
+      end
+      format.js do
+        if user
+          render action: :redirect
+        else
+          render partial: 'login_error'
+        end
+      end
     end
   end
 

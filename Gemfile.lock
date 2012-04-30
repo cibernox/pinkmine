@@ -50,6 +50,7 @@ GEM
     coffee-script-source (1.3.1)
     columnize (0.3.6)
     commonjs (0.2.6)
+    country_select (0.0.2)
     daemons (1.1.8)
     debugger (1.1.1)
       columnize (>= 0.3.1)
@@ -180,6 +181,9 @@ GEM
       tilt (~> 1.3)
     shoulda-matchers (1.1.0)
       activesupport (>= 3.0.0)
+    simple_form (2.0.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slop (2.4.4)
     sorcery (0.7.11)
       oauth (~> 0.4.4)
@@ -215,6 +219,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
+  country_select
   debugger
   decent_exposure
   email_validator
@@ -231,6 +236,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
+  simple_form
   sorcery
   sqlite3
   therubyracer

@@ -1,6 +1,8 @@
-# # LoginForm
-# $('#loginForm').live 'submit', ->
-#   $.post(@action, $(this).serialize(), 'script').
-#     success(-> alert 'caca').
-#     error(-> alert 'error')
-#   false
+# LoginForm
+$('#loginForm').live 'submit', ()->
+  $form = $(this)
+  $.post("#{@action}.js", $(this).serialize)
+    .error (data) -> 
+      $form.find('.alert-error').remove()
+      $form.find('fieldset').before $(data.responseText).fadeIn(50)
+  false

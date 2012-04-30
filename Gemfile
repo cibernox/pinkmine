@@ -28,6 +28,8 @@ gem 'bcrypt-ruby'
 gem 'sorcery'
 gem 'email_validator'
 gem 'thin-rails'
+gem 'simple_form'
+gem 'country_select'
 
 group :development do
   gem 'pry-rails'
