@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Pinkmine::Application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   get "login"  => "sessions#new",     as: "login"

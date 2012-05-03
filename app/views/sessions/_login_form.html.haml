@@ -1,5 +1,5 @@
 - remote ||= false
-= form_tag sessions_path, remote: remote, class: 'form-horizontal', id: 'loginForm' do |f|
+= form_tag sessions_path, remote: remote, class: 'form-horizontal', id: 'login_form' do |f|
   = render 'login_error' if action_name == 'create'
   %fieldset
     .control-group

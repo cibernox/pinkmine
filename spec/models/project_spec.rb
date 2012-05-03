@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 describe Project do
   let(:saved_project){ Project.create }
   

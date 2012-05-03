@@ -1,30 +1,82 @@
+/ Template de alerts
+%script#alertTemplate{ type: "text/template" }
+  .alert{ class: "{{klass}}"}
+    %a.close{ 'data-dismiss' => 'alert', href: "#"}×
+    {{text}}
+
+/ Contenido estático
 .row-fluid
   .span3
-    .well.sidebar-nav
-      %ul.nav.nav-tabs.nav-stacked
-        %li.nav-header Mis datos
-        %li.active= link_to 'Cuenta', '#account', icon: 'user', 'data-toggle' => "tab"
-        %li= link_to 'Datos personales', '#personal', icon: 'book', 'data-toggle' => "tab"
-        %li= link_to 'Asociaciones', '#associations', icon: 'home', 'data-toggle' => "tab"
-        %li= link_to 'Alertas', '#alerts', icon: 'envelope', 'data-toggle' => "tab"
-        %li.nav-header Seguridad
-        %li= link_to 'RSS Keys', '#rss', icon: 'qrcode', 'data-toggle' => "tab"
-        %li= link_to 'API keys', '#api', icon: 'barcode', 'data-toggle' => "tab"
+    .sidebar-nav
+      .well
+        %ul.nav.nav-pills.nav-stacked
+          %li.nav-header Mis datos
+          %li.active= link_to 'Cuenta', '#account', icon: 'user', 'data-toggle' => "tab"
+          %li= link_to 'Datos personales', '#personal', icon: 'book', 'data-toggle' => "tab"
+          %li= link_to 'Asociaciones', '#associations', icon: 'home', 'data-toggle' => "tab"
+          %li= link_to 'Alertas', '#alerts', icon: 'envelope', 'data-toggle' => "tab"
+          %li.nav-header Seguridad
+          %li= link_to 'RSS Keys', '#rss', icon: 'qrcode', 'data-toggle' => "tab"
+          %li= link_to 'API keys', '#api', icon: 'barcode', 'data-toggle' => "tab"
+          %li.divider
+          %li= link_to 'Help', '#help', icon: 'question-sign', 'data-toggle' => "tab"
   .span9
     .tab-content
       #account.tab-pane.active
-        %h2 Cuenta
-        .row
-          .span2 
-            %label Email
-          .span3 info@pinkmine.com
-          .span2
-            %label Otro dato
-          .span3 03/09/1986
+        = simple_form_for current_user, html: { class: 'user_form', 'data-model' => 'user' } do |f|
+          %fieldset
+            .row-fluid
+              %legend
+                Mi cuenta
+                = link_to ' Editar', '#', class: 'btn btn-mini pull-right toggle-edition edit', icon: 'edit'
+            .alert-container.text-center
+            .row-fluid
+              .span6
+                = f.input :username, disabled: true
+                = f.input :email, disabled: true
+              .span6
+                = f.input :password, disabled: true
+                = f.input :password_confirmation, disabled: true
+            .row-fluid
+              .span12.text-center
+                = f.button :submit, class: 'btn-primary', disabled: true
       #personal.tab-pane
-        %h2 Datos personales
+        = simple_form_for current_user, html: { class: 'user_form', 'data-model' => 'user' } do |f|
+          %fieldset
+            .row-fluid
+              %legend
+                Datos personales
+                = link_to ' Editar', '#', class: 'btn btn-mini pull-right toggle-edition edit', icon: 'edit'
+            .alert-container.text-center
+            .row-fluid
+              .span6
+                = f.input :name, disabled: true
+                = f.input :surname1, disabled: true
+                = f.input :surname2, disabled: true
+              .span6
+                = f.input :twitter,  disabled: true
+                = f.input :github,  disabled: true
+            .row-fluid
+              .span12.text-center
+                = f.button :submit, class: 'btn-primary', disabled: true
       #associations.tab-pane
-        %h2 Asociaciones
+        = simple_form_for current_user, html: { class: 'user_form', 'data-model' => 'user' } do |f|
+          %fieldset
+            .row-fluid
+              %legend
+                Asociaciones
+                = link_to ' Editar', '#', class: 'btn btn-mini pull-right toggle-edition edit', icon: 'edit'
+            .alert-container.text-center
+            .row-fluid
+              .span6
+                = f.input :username, disabled: true
+                = f.input :email, disabled: true
+              .span6
+                = f.input :password, disabled: true
+                = f.input :password_confirmation, disabled: true
+            .row-fluid
+              .span12.text-center
+                = f.button :submit, class: 'btn-primary', disabled: true
       #alerts.tab-pane
         %h2 Alertas
       #rss.tab-pane

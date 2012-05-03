@@ -22,6 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'underscore-rails'
 gem 'haml-rails'
 gem 'decent_exposure'
 gem 'bcrypt-ruby'
@@ -39,12 +40,16 @@ group :development do
   gem 'quiet_assets'
 end
 
-group :test, :development do
-  gem 'foreigner'
+group :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'rspec-html-matchers'
   gem 'shoulda-matchers'
   gem 'ipsum'
+end
+
+group :test, :development do
+  gem 'foreigner'
+  gem 'factory_girl_rails'
 end
 
 # To use ActiveModel has_secure_password

@@ -14,14 +14,14 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        = link_to 'Pinkmine', '#', class: 'brand'
+        = link_to 'Pinkmine', root_url, class: 'brand'
         .btn-group.pull-right
           %a.btn.dropdown-toggle{ 'data-toggle' => 'dropdown', href: "#" }
-            %i.icon-user= " #{current_user ? current_user.username : 'Username'}"
+            %i.icon-home= " #{current_user ? current_user.username : 'Username'}"
             %span.caret
           %ul.dropdown-menu
-            %li= link_to 'Profile', my_profile_path, icon: 'pencil'
-            %li= link_to 'Stats', my_profile_path, icon: 'home'
+            %li= link_to 'Profile', my_profile_path, icon: 'user'
+            %li= link_to 'Stats', my_profile_path, icon: 'calendar'
             %li.divider
             %li= link_to 'Sign Out', logout_path, icon: 'off'
         .nav-collapse
@@ -31,4 +31,5 @@
             %li= link_to 'Contact', '#contact'
 
   .container-fluid
+    .row-fluid= bootstrap_flashes
     = yield

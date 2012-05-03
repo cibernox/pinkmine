@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 describe Issue do
 
   it_behaves_like "an object with responsable"

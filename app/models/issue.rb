@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Issue < ActiveRecord::Base
   attr_accessible :title, :code, :description, :project, :status, :percentage
   include WithResponsable

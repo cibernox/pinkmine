@@ -1,6 +1,6 @@
+# -*- encoding : utf-8 -*-
 class WelcomeController < ApplicationController
   before_filter :redirect_to_welcome_unless_logged, only: :index
-
 
   private
   def redirect_to_welcome_unless_logged

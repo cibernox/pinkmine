@@ -1,10 +1,13 @@
-- remote ||= false
-= simple_form_for user, html: { class: 'form-horizontal', id: 'signupForm' } do |f|
+= simple_form_for user do |f|
   .row-fluid
     .span2
     .span8
       %fieldset
         %legend Datos de usuario
+        - if f.object.errors.any?
+          .row-fluid
+            .margin-1em
+              .span12= bootstrap_alert nil, :error
         .row-fluid
           .margin-1em
             .span6
@@ -13,19 +16,6 @@
             .span6
               = f.input :password
               = f.input :password_confirmation
-  / .row-fluid.margin-1em
-  /   .span2
-  /   .span8
-  /     %fieldset
-  /       %legend Datos personales
-  /       .row-fluid
-  /         .margin-1em
-  /           .span6
-  /             = f.input :username #, input_html: { class: 'input-xlarge' }
-  /             = f.input :email #, input_html: { class: 'input-xlarge' }
-  /           .span6
-  /             = f.input :password
-  /             = f.input :password_confirmation
   .row-fluid
     .span2
     .span8

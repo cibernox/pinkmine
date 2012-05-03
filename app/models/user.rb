@@ -1,7 +1,9 @@
+# -*- encoding : utf-8 -*-
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  attr_accessible :username, :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation, :name, :surname1, :surname2, :twitter,
+    :github
 
   #
   # Relations
@@ -14,7 +16,7 @@ class User < ActiveRecord::Base
   #
   validates :username, presence: true, uniqueness: true, length: 5..20
   validates :email,    presence: true, uniqueness: true, email: true
-  validates :password, presence: { on: :create }, confirmation: true, length: 5..20
+  validates :password, presence: { on: :create }, confirmation: true, length: { in: 5..20, on: :create }
 
   #
   # Métodos de instancia

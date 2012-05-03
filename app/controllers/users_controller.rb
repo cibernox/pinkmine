@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
   #
   # Filters
   #
@@ -12,16 +13,24 @@ class UsersController < ApplicationController
   expose(:user)
 
   def new
+    respond_with user
+  end
+
+  def edit
+    respond_with user
   end
 
   def create
     if user.save
-      auto_login(user)
-      flash.now.alert = "Email or password was invalid."
-      redirect_to root_url, :notice => "Signed up!"
-    else
-      render :new
+      auto_login user
+      flash[:notice] = "User was created successfully."
     end
+    respond_with user, location: root_url
+  end
+
+  def update
+    flash[:notice] = "User was created updated." if user.save
+    respond_with user
   end
 
   # def index

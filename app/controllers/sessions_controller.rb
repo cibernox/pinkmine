@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SessionsController < ApplicationController
   layout 'login'
   
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
           render :new
         end
       end
-      format.js
+      format.js { flash[:success] = "Login correct" }
     end
   end
 

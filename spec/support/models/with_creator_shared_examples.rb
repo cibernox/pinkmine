@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 shared_examples_for "an object with creator" do
   #
   # Relations

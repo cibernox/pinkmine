@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddResponsableToIssues < ActiveRecord::Migration
   def change
     add_column :issues, :responsable_id, :integer
