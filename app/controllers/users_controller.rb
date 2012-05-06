@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   respond_to :html, :json
+  
   #
   # Filters
   #
@@ -21,15 +22,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    if user.save
-      auto_login user
-      flash[:notice] = "User was created successfully."
-    end
+    auto_login user if user.save
     respond_with user, location: root_url
   end
 
   def update
-    flash[:notice] = "User was created updated." if user.save
+    user.save
     respond_with user
   end
 
