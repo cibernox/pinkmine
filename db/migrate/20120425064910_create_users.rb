@@ -7,6 +7,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :crypted_password,   default: nil
       t.string :salt,               default: nil
       t.string :remember_me_token,  default: nil
+      t.string :name,               default: nil
+      t.string :surname1,           default: nil
+      t.string :surname2,           default: nil
+      t.date   :born_on,            default: nil
+      t.string :twitter,            default: nil
+      t.string :github,             default: nil
       t.datetime :remember_me_token_expires_at, default: nil
       t.timestamps
     end

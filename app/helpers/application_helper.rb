@@ -15,11 +15,11 @@ module ApplicationHelper
   end
 
   def default_text_for_bootstrap_alert(level)
-    text = case level.to_s
-    when 'notice' then nil
-    when 'error' then '<strong>Oh oh!</strong> Parece que hay algún dato erróneo'
-    when 'alert' then nil
-    when 'success' then '<strong>Listo!</strong> Se han actualizado los datos'
+    text = case level.to_sym
+    when :notice then nil
+    when :error then '<strong>Oh oh!</strong> Parece que hay algún dato erróneo'
+    when :alert then nil
+    when :success then '<strong>Listo!</strong> Se han actualizado los datos'
     else nil
     end
     return nil unless text
@@ -43,11 +43,11 @@ module ApplicationHelper
 
   # Dado un tipo de mensaje flash, devuelve la clase del alert de bootstrap correspondiente
   def flash_class(level)
-    case level.to_s
-    when 'notice' then "alert-info"
-    when 'error' then "alert-error"
-    when 'alert' then "alert-warning"
-    when 'success' then "alert-success"
+    case level.to_sym
+    when :notice then "alert-info"
+    when :error then "alert-error"
+    when :alert then "alert-warning"
+    when :success then "alert-success"
     end
   end
 

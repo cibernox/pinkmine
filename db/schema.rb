@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,27 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502070424) do
+ActiveRecord::Schema.define(:version => 20120425211013) do
 
   create_table "issues", :force => true do |t|
-    t.string   "title"
-    t.string   "code"
-    t.text     "description"
-    t.integer  "project_id"
+    t.string   "title",                        :null => false
+    t.string   "code",           :limit => 10, :null => false
+    t.text     "description",                  :null => false
+    t.integer  "project_id",                   :null => false
     t.string   "status"
     t.integer  "percentage"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "responsable_id"
-    t.integer  "creator_id"
+    t.integer  "creator_id",                   :null => false
+    t.integer  "responsable_id",               :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "projects", :force => true do |t|
-    t.string   "name"
+    t.string   "name",           :null => false
+    t.integer  "creator_id",     :null => false
+    t.integer  "responsable_id", :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "creator_id"
-    t.integer  "responsable_id"
   end
 
   create_table "users", :force => true do |t|
@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(:version => 20120502070424) do
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
     t.string   "name"
     t.string   "surname1"
     t.string   "surname2"
     t.date     "born_on"
     t.string   "twitter"
     t.string   "github"
+    t.datetime "remember_me_token_expires_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
