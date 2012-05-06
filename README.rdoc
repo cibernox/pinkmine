@@ -1,15 +1,4 @@
 == Pinkmine
 
-Este proyecto se trata de un clon de redmine en que se pretende mejorar la interfaz más que añadirle
-nuevas funcionalidades.
-
-
-== Resumen Funcional
-
-=== Elementos del negocio:
-
-User: Usuarios del sistema. Crean proyectos, ramas e issues
-
-Projectos: La unidad de trabajo más grande. Tiene N issues. Es creado por un usuario.
-
-Issues: La unidad de trabajo más pequeña. Pertecene a un proyecto, y es creada por un usuario.
+A redmine-inspired project manager, built on top of twitter bootstrap.
+Also an example aplication for rails 3.2 + simple_form + twitter_bootstrap

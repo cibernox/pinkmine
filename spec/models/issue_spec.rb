@@ -1,4 +1,6 @@
 # -*- encoding : utf-8 -*-
+require 'spec_helper'
+
 describe Issue do
 
   it_behaves_like "an object with responsable"
@@ -7,8 +9,8 @@ describe Issue do
   #
   # Factories
   #
-  let(:user){ create :user }
-  let(:project){ create :project, creator: user }
+  let(:user)    { create :user }
+  let(:project) { create :project, creator_id: user.id }
 
   #
   # Relations

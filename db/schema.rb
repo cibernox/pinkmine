@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20120425211013) do
     t.string   "status"
     t.integer  "percentage"
     t.integer  "creator_id",                   :null => false
-    t.integer  "responsable_id",               :null => false
+    t.integer  "responsable_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120425211013) do
   create_table "projects", :force => true do |t|
     t.string   "name",           :null => false
     t.integer  "creator_id",     :null => false
-    t.integer  "responsable_id", :null => false
+    t.integer  "responsable_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

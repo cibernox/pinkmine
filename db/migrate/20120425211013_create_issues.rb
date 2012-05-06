@@ -9,7 +9,7 @@ class CreateIssues < ActiveRecord::Migration
       t.string     :status
       t.integer    :percentage
       t.integer    :creator_id,     null: false
-      t.integer    :responsable_id, null: false
+      t.integer    :responsable_id
       t.timestamps
     end
     add_foreign_key :issues, :projects
