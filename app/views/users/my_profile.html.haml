@@ -32,10 +32,16 @@
             .alert-container.text-center
             .row-fluid
               .span6
-                = f.input :username, disabled: true
-                = f.input :email, disabled: true
+                = f.input :username, disabled: true, input_html: { 'data-original' => f.object.username }
+            .row-fluid
+              .span6
+                = f.input :email, disabled: true, input_html: { 'data-original' => f.object.email }
+              .span6
+                = f.input :email_confirmation, disabled: true
+            .row-fluid
               .span6
                 = f.input :password, disabled: true
+              .span6
                 = f.input :password_confirmation, disabled: true
             .row-fluid
               .span12.text-center

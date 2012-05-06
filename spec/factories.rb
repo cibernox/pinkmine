@@ -15,6 +15,7 @@ FactoryGirl.define do
     username "Johny"
     email "email@test.com"
     password "123123"
+    accepts_conditions true
   end
 
   factory :project do

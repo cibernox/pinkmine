@@ -1,6 +1,26 @@
 = simple_form_for user do |f|
   .row-fluid
-    .span2
+    .span4.well
+      %h2 Condiciones de servicio
+      .margin-1em
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada sem at metus sollicitudin
+          feugiat. Duis magna purus, vehicula eget aliquet in, blandit sit amet mi. Aliquam ultrices risus vitae
+          velit consequat ultrices. Vivamus quis elit eu felis luctus vehicula. Nulla facilisi. In hac habitasse
+          platea dictumst. Aenean sodales rhoncus lorem in aliquet.
+        %p
+          Mauris ultrices ornare viverra. Cras vel nulla justo, id ornare mauris. Donec a velit tellus, 
+          ullamcorper gravida lorem. Ut sapien tellus, pretium ac sodales id, facilisis nec orci. Praesent a
+          sapien arcu. Suspendisse ac diam in tellus pretium faucibus. Praesent enim velit, aliquam nec bibendum
+          sed, ultrices ut turpis. Pellentesque dui eros, consectetur ut mattis at, scelerisque eu felis.
+          Aliquam adipiscing consequat turpis in pulvinar. Nulla ac metus ipsum. Quisque lacus enim, varius id
+          facilisis at, rutrum a risus. Fusce ultrices volutpat nulla ut tincidunt. Nullam tincidunt tortor in
+          sem facilisis bibendum.
+      .control-group{ class: ('error' if f.object.errors[:accepts_conditions].any?) }
+        %label.checkbox
+          = f.check_box :accepts_conditions
+          %strong Acepto las condiciones de servicio
+
     .span8
       %fieldset
         %legend Datos de usuario
@@ -9,17 +29,20 @@
             .margin-1em
               .span12= bootstrap_alert nil, :error
         .row-fluid
-          .margin-1em
-            .span6
-              = f.input :username
-              = f.input :email
-            .span6
-              = f.input :password
-              = f.input :password_confirmation
-  .row-fluid
-    .span2
-    .span8
-      .text-center
-        = f.button :submit, 'Enviar', class: 'btn-primary'
-      .text-right.margin-1em.subindex
-        ¿Ya está registrado? Accede #{ link_to 'aquí', login_path }
+          .row-fluid
+            .margin-1em
+              .span6
+                = f.input :username
+          .row-fluid
+            .span6= f.input :email
+            .span6= f.input :email_confirmation
+          .row-fluid
+            .span6= f.input :password
+            .span6= f.input :password_confirmation
+    .row-fluid
+      .span2
+      .span8
+        .text-center
+          = f.button :submit, 'Completar registro', class: 'btn-primary'
+        .text-right.margin-1em.subindex
+          ¿Ya está registrado? Accede #{ link_to 'aquí', login_path }

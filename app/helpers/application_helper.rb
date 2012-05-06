@@ -14,6 +14,8 @@ module ApplicationHelper
     super body, url, html_options
   end
 
+
+  # Gives a good default text for display on alert messages
   def default_text_for_bootstrap_alert(level)
     text = case level.to_sym
     when :notice then nil

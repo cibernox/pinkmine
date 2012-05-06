@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120425211013) do
     t.date     "born_on"
     t.string   "twitter"
     t.string   "github"
+    t.boolean  "accepts_conditions"
     t.datetime "remember_me_token_expires_at"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false

@@ -26,6 +26,10 @@ describe User do
       subject.should allow_value('aaaaa').for(:username)
       subject.should_not allow_value('aaaaaaaaaaaaaaaaaaaaa').for(:username)
     end
+    it "should validate that the user accepts the conditions of the service" do
+      subject.should allow_value(true).for(:accepts_conditions)
+      subject.should_not allow_value(false).for(:accepts_conditions)
+    end
   end
 
   #

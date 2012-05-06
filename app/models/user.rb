@@ -2,8 +2,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  attr_accessible :username, :email, :password, :password_confirmation, :name, :surname1, :surname2, :twitter,
-    :github
+  attr_accessible :username, :email, :email_confirmation, :password, :password_confirmation, :name, :surname1,
+    :surname2, :twitter, :github, :accepts_conditions
 
   #
   # Relations
@@ -15,8 +15,9 @@ class User < ActiveRecord::Base
   # Validations
   #
   validates :username, presence: true, uniqueness: true, length: 5..20
-  validates :email,    presence: true, uniqueness: true, email: true
+  validates :email,    presence: true, uniqueness: true, email: true, confirmation: true
   validates :password, presence: { on: :create }, confirmation: true, length: { in: 5..20, on: :create }
+  validates :accepts_conditions, inclusion: { in: [true], message: "Debe aceptar las condiciones" }
 
   #
   # Métodos de instancia
