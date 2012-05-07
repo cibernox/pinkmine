@@ -1,7 +1,12 @@
 # -*- encoding : utf-8 -*-
 class ProjectsController < ApplicationController
   respond_to :html, :json
-  
+
+  #
+  # Filters
+  #
+  before_filter :require_login
+
   #
   # Decent exposure
   #

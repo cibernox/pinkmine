@@ -1,21 +1,26 @@
-%h1 Projects
+.row-fluid
+  .span12
+    %ul.breadcrumb
+      %li
+        = link_to 'Home', root_path
+        %span.divider /
+      %li.active
+        = link_to 'Projects', projects_path
+    .row-fluid
+      .span3
+        .sidebar-nav.well
+          %ul.nav.nav-pills.nav-stacked
+            %li.active= link_to 'Nuevo proyecto', '#new_project', icon: 'plus'
+            %li= link_to 'Estadísticas', '#personal', icon: 'book'
+            %li= link_to 'Settings', '#associations', icon: 'home'
+      .span9
+        %ul.thumbnails
+          %li.span2= link_to image_tag('la_o.png'), projects.first, class: 'thumbnail'
+          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
 
-- projects.each do |p|
-  %p= p.name
-/ %table
-/   %tr
-/     %th
-/     %th
-/     %th
-
-/   - @projects.each do |project|
-/     %tr
-/       %td= project.name
-/       %td= project.creator
-/       %td= link_to 'Show', project
-/       %td= link_to 'Edit', edit_project_path(project)
-/       %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
-
-/ %br
-
-/ = link_to 'New Project', new_project_path
+        - projects.each do |p|
+          %p= p.name

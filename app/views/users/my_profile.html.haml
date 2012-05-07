@@ -11,19 +11,19 @@
       .well
         %ul.nav.nav-pills.nav-stacked
           %li.nav-header Mis datos
-          %li.active= link_to 'Cuenta', '#account', icon: 'user', 'data-toggle' => "tab"
-          %li= link_to 'Datos personales', '#personal', icon: 'book', 'data-toggle' => "tab"
-          %li= link_to 'Asociaciones', '#associations', icon: 'home', 'data-toggle' => "tab"
-          %li= link_to 'Alertas', '#alerts', icon: 'envelope', 'data-toggle' => "tab"
+          %li.active= link_to 'Cuenta', '#account', icon: 'user', data: { toggle: 'tab' }
+          %li= link_to 'Datos personales', '#personal', icon: 'book', data: { toggle: 'tab' }
+          %li= link_to 'Asociaciones', '#associations', icon: 'home', data: { toggle: 'tab' }
+          %li= link_to 'Alertas', '#alerts', icon: 'envelope', data: { toggle: 'tab' }
           %li.nav-header Seguridad
-          %li= link_to 'RSS Keys', '#rss', icon: 'qrcode', 'data-toggle' => "tab"
-          %li= link_to 'API keys', '#api', icon: 'barcode', 'data-toggle' => "tab"
+          %li= link_to 'RSS Keys', '#rss', icon: 'qrcode', data: { toggle: 'tab' }
+          %li= link_to 'API keys', '#api', icon: 'barcode', data: { toggle: 'tab' }
           %li.divider
-          %li= link_to 'Help', '#help', icon: 'question-sign', 'data-toggle' => "tab"
+          %li= link_to 'Help', '#help', icon: 'question-sign', data: { toggle: 'tab' }
   .span9
     .tab-content
       #account.tab-pane.active
-        = simple_form_for current_user, html: { class: 'user_form', 'data-model' => 'user' } do |f|
+        = simple_form_for current_user, html: { class: 'user_form', data: { model: 'user' } } do |f|
           %fieldset
             .row-fluid
               %legend
@@ -32,10 +32,10 @@
             .alert-container.text-center
             .row-fluid
               .span6
-                = f.input :username, disabled: true, input_html: { 'data-original' => f.object.username }
+                = f.input :username, disabled: true, input_html: { data: { original: f.object.username } }
             .row-fluid
               .span6
-                = f.input :email, disabled: true, input_html: { 'data-original' => f.object.email }
+                = f.input :email, disabled: true, input_html: { data: { original: f.object.email } }
               .span6
                 = f.input :email_confirmation, disabled: true
             .row-fluid
@@ -47,7 +47,7 @@
               .span12.text-center
                 = f.button :submit, class: 'btn-primary', disabled: true
       #personal.tab-pane
-        = simple_form_for current_user, html: { class: 'user_form', 'data-model' => 'user' } do |f|
+        = simple_form_for current_user, html: { class: 'user_form', data: { model: 'user' } } do |f|
           %fieldset
             .row-fluid
               %legend
@@ -66,7 +66,7 @@
               .span12.text-center
                 = f.button :submit, class: 'btn-primary', disabled: true
       #associations.tab-pane
-        = simple_form_for current_user, html: { class: 'user_form', 'data-model' => 'user' } do |f|
+        = simple_form_for current_user, html: { class: 'user_form', data: { model: 'user' } } do |f|
           %fieldset
             .row-fluid
               %legend

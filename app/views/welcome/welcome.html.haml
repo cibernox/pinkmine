@@ -10,8 +10,8 @@
         %a.btn.btn-primary.btn-large{ href: '/signup' }
           %h2 &nbsp;&nbsp;&nbsp;&nbsp; Regístrate ya &nbsp;&nbsp;&nbsp;&nbsp;
       .row-fluid.text-center
-        O haz #{ link_to 'login', '#loginModal', 'data-toggle' => 'modal' } si ya estas registrado
-      #loginModal.modal.hide.fade= render 'login_modal'
+        O haz #{ link_to 'login', '#login_modal', data: { toggle: 'modal' } } si ya estas registrado
+      #login_modal.modal.hide.fade= render 'login_modal'
 
 .row-fluid
   .span3

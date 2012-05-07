@@ -32,7 +32,7 @@ module ApplicationHelper
   def bootstrap_alert(text = nil, level = nil)
     text ||= default_text_for_bootstrap_alert(level)
     content_tag :div, class: "alert fade in #{flash_class(level)}" do
-      button_tag('×', class: 'close', 'data-dismiss' => "alert") + content_tag(:div, text, class: 'text-center')
+      button_tag('×', class: 'close', data: { dismiss: "alert" }) + content_tag(:div, text, class: 'text-center')
     end
   end
 

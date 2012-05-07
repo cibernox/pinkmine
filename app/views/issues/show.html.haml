@@ -1,6 +1,15 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_issue_path(@issue)
-\|
-= link_to 'Back', issues_path
+.row-fluid
+  .span12
+    %ul.breadcrumb
+      %li
+        = link_to 'Home', root_path
+        %span.divider /
+      %li
+        = link_to 'Projects', projects_path
+        %span.divider /
+      %li
+        = link_to project.name, project
+        %span.divider /
+      %li.active
+        = link_to "# #{issue.code} - #{issue.title}", '#'
+    %p Bla bla esta issue bla bla

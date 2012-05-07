@@ -3,6 +3,11 @@ class IssuesController < ApplicationController
   respond_to :html, :json
   
   #
+  # Filters
+  #
+  before_filter :require_login
+
+  #
   # Decent exposure
   #
   expose(:project) { Project.find(params[:project_id]) }
