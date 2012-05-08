@@ -28,6 +28,19 @@ module ApplicationHelper
     text.html_safe
   end
 
+  # Returns a class to style with twitter bootstrap the color of a progress bar
+  # Colors changes this way: red (low), orange(medium), green(high) and blue(complete)
+  def issue_progress_bar_class(issue)
+    color = case issue.percentage
+    when 0..33 then 'progress-danger'
+    when 34..66 then 'progress-warning'
+    when 67..99 then 'progress-success'
+    else 'progress-info'
+    end
+    striped = 'progress-striped active' if issue.in_progress?
+    "#{striped} #{color}"
+  end
+
   # Renderiza un alert estilado para bootstrap, con boton de cerrar.
   def bootstrap_alert(text = nil, level = nil)
     text ||= default_text_for_bootstrap_alert(level)

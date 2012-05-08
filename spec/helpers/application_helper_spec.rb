@@ -35,6 +35,26 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#progress_bar_class' do
+    it "return an class for a progress bar based on a percentage of progress" do
+      issue_progress_bar_class(Issue.new(percentage: 0)).should =~ /progress-danger/
+      issue_progress_bar_class(Issue.new(percentage: 33)).should =~ /progress-danger/
+      issue_progress_bar_class(Issue.new(percentage: 34)).should =~ /progress-warning/
+      issue_progress_bar_class(Issue.new(percentage: 66)).should =~ /progress-warning/
+      issue_progress_bar_class(Issue.new(percentage: 67)).should =~ /progress-success/
+      issue_progress_bar_class(Issue.new(percentage: 99)).should =~ /progress-success/
+      issue_progress_bar_class(Issue.new(percentage: 100)).should =~ /progress-info/
+    end
+    it "should return a class for a active and striped bar if the issue is in progress" do
+      html_class = issue_progress_bar_class(Issue.new(percentage: 50, status: 'in_progress'))
+      html_class.should =~ /active/
+      html_class.should =~ /progress-striped/
+      html_class = issue_progress_bar_class(Issue.new(percentage: 50, status: 'done'))
+      html_class.should_not =~ /active/
+html_class.should_not =~ /progress-striped/
+    end
+  end
+
   describe '#bootstrap_flashes' do
     let(:flashes){ helper.bootstrap_flashes }
     it "should display an alert for each kind of flash entry" do

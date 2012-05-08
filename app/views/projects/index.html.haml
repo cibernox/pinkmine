@@ -7,20 +7,20 @@
       %li.active
         = link_to 'Projects', projects_path
     .row-fluid
-      .span3
+      .span2
         .sidebar-nav.well
           %ul.nav.nav-pills.nav-stacked
             %li.active= link_to 'Nuevo proyecto', '#new_project', icon: 'plus'
             %li= link_to 'Estadísticas', '#personal', icon: 'book'
             %li= link_to 'Settings', '#associations', icon: 'home'
-      .span9
+      .span10
         %ul.thumbnails
           %li.span2= link_to image_tag('la_o.png'), projects.first, class: 'thumbnail'
-          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
-          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
-          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
-          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
-          %li.span2= link_to image_tag('http://placehold.it/256x256'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('t.png'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
 
         - projects.each do |p|
           %p= p.name

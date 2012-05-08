@@ -40,6 +40,12 @@ class Issue < ActiveRecord::Base
   #
   # Instance metods
   #
+  VALID_STATUS.each do |status|
+    define_method("#{status}?") do
+      self.status == status
+    end
+  end
+
   def opened?
     %w( unstarted in_progress resolved feedback ).include?(status)
   end

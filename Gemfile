@@ -38,6 +38,7 @@ group :development do
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'quiet_assets'
+  gem 'guard-livereload'
 end
 
 group :test do
