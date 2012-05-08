@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   #
   # Relations
   #
-  has_many :issues
+  has_many :issues, order: 'code DESC'
 
   #
   # Validations

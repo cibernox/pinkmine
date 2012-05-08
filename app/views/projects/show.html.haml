@@ -10,45 +10,36 @@
       %li.active
         = link_to project.name, '#'
     .row-fluid
-      .span3
+      .span2
         .sidebar-nav.well
           %ul.nav.nav-pills.nav-stacked
-            %li.active= link_to 'Nuevo proyecto', '#new_project', icon: 'plus'
+            %li.active= link_to 'Nueva issue', '#new_project', icon: 'plus'
             %li= link_to 'Estadísticas', '#personal', icon: 'book'
             %li= link_to 'Settings', '#associations', icon: 'home'
-      .span9
+      .span10
         %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th Name
-              %th Class
+              %th #
+              %th Status
+              %th Title
               %th Description
+              %th Responsable
+              %th Updated at
             %tbody
-              %tr
-                %td Default
-                %td.muted None
-                %td No styles, just columns and rows
-              %tr
-                %td Basic
-                %td
-                  %code .table
-                %td Only horizontal lines between rows
-              %tr
-                %td Bordered
-                %td 
-                  %code .table-bordered
-                %td Rounds corners and adds outer border
-              %tr
-                %td Zebra-stripe
-                %td 
-                  %code .table-striped
-                %td Adds light gray background color to odd rows (1, 3, 5, etc)
-              %tr
-                %td Condensed
-                %td 
-                  %code .table-condensed
-                %td Cuts vertical padding in half, from 8px to 4px, within all
-      
-        %ul#issues_list
-          - project.issues.each do |issue|
-            %li= render issue
+              - project.issues.each do |issue|
+                %tr
+                  %td= link_to issue.code, [project, issue]
+                  %td
+                    .btn-group
+                      %a.btn.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
+                        = issue.status
+                        %span.caret
+                      %ul.dropdown-menu
+                        = link_to 'Started', '#'
+                        = link_to 'Done', '#'
+                        = link_to 'Feedback', '#'
+                  %td= link_to issue.title, [project, issue]
+                  %td= truncate(issue.description, length: 60)
+                  %td= link_to issue.responsable, issue.responsable if issue.responsable
+                  %td.no_br= issue.updated_at.strftime '%d/%m/%y %H:%M'
