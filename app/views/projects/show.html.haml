@@ -22,28 +22,20 @@
             %tr
               %th #
               %th Status
+              %th Priority
               %th Title
               %th Description
               %th Assigned
               %th Progress
-              %th Updated at
+              / %th Updated at
             %tbody
               - project.issues.each do |issue|
                 %tr
                   %td= link_to issue.code, [project, issue]
-                  %td
-                    .btn-group
-                      %a.btn.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
-                        = issue.status
-                        %span.caret
-                      %ul.dropdown-menu
-                        = link_to 'Started', '#'
-                        = link_to 'Done', '#'
-                        = link_to 'Feedback', '#'
+                  %td= issue_status_dropdown(issue)
+                  %td= issue_priority_label(issue)
                   %td= link_to issue.title, [project, issue]
                   %td= truncate(issue.description, length: 50)
                   %td= link_to issue.responsable, issue.responsable if issue.responsable
-                  %td
-                    .progress{ style: "width: 150px", class: issue_progress_bar_class(issue) }
-                      .bar{ style: "width: #{issue.percentage}%"} #{issue.percentage}%
-                  %td= issue.updated_at.strftime '%d/%m/%y %H:%M'
+                  %td= issue_progress_bar(issue)
+                  / %td= issue.updated_at.strftime '%d/%m/%y %H:%M'

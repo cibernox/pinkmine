@@ -1,7 +1,7 @@
 / Template de alerts
 %script#alertTemplate{ type: "text/template" }
   .alert{ class: "{{klass}}"}
-    %a.close{ 'data-dismiss' => 'alert', href: "#"}×
+    %a.close{ href: "#", data: { dismiss: 'alert' } }×
     {{text}}
 
 / Contenido estático

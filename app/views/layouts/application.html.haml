@@ -10,13 +10,13 @@
   .navbar.navbar-fixed-top
     .navbar-inner
       .container-fluid
-        %a.btn.btn-navbar{ 'data-toggle' => 'collapse', 'data-target' => '.nav-collapse' }
+        %a.btn.btn-navbar{ data: { toggle: 'collapse', target: '.nav-collapse' } }
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
         = link_to 'Pinkmine', root_url, class: 'brand'
         .btn-group.pull-right
-          %a.btn.dropdown-toggle{ 'data-toggle' => 'dropdown', href: "#" }
+          %a.btn.dropdown-toggle{ href: "#", data: { toggle: 'dropdown' } }
             %i.icon-home= " #{current_user ? current_user.username : 'Username'}"
             %span.caret
           %ul.dropdown-menu

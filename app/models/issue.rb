@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Issue < ActiveRecord::Base
-  attr_accessible :title, :code, :description, :project, :status, :percentage
+  attr_accessible :title, :code, :description, :project, :status, :percentage, :priority
   include WithResponsable
   include WithCreator
 
@@ -8,6 +8,7 @@ class Issue < ActiveRecord::Base
   # Constants
   #
   VALID_STATUS = %w( unstarted in_progress resolved feedback closed rejected )
+  VALID_PRIORITIES = %w( low normal high urgent immediate )
 
   #
   # Relations
@@ -35,6 +36,7 @@ class Issue < ActiveRecord::Base
   validates :code,       presence: true, numericality: { greater_than: 0 }
   validates :project,    presence: true
   validates :status,     inclusion: { in: VALID_STATUS }
+  validates :priority,   inclusion: { in: VALID_PRIORITIES }
   validates :percentage, inclusion: { in: 0..100 }
   
   #
@@ -43,6 +45,12 @@ class Issue < ActiveRecord::Base
   VALID_STATUS.each do |status|
     define_method("#{status}?") do
       self.status == status
+    end
+  end
+
+  VALID_PRIORITIES.each do |priority|
+    define_method("#{priority}?") do
+      self.priority == priority
     end
   end
 
