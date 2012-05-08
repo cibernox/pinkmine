@@ -62,6 +62,11 @@ describe Issue do
     end
     # Percentage
     it { should ensure_inclusion_of(:percentage).in_range(0..100) }
+    # priority
+    it "should validate that the state is one of the list of valid statates" do
+      subject.class::VALID_PRIORITIES.each { |priority| subject.should allow_value(priority).for(:priority) }
+      subject.should_not allow_value('abcd').for(:priority)
+    end
   end
 
   #

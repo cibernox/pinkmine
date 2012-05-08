@@ -30,6 +30,7 @@ FactoryGirl.define do
     association :project, factory: :project, strategy: :build
     association :creator, factory: :user, strategy: :build
     status 'unstarted'
+    priority 'normal'
   end
 
 end
