@@ -41,7 +41,9 @@ module IssuesHelper
     content_tag :div, class: 'btn-group' do
       link_to(link_content.html_safe, '#', class: 'btn btn-small dropdown-toggle', data: { toggle: "dropdown"} ) +
       content_tag(:ul, class: 'dropdown-menu') do
-        Issue::VALID_STATUS.map { |status| link_to(status, '#') }.join.html_safe
+        Issue::VALID_STATUS.map do |status|
+          link_to status, '#', class: ('active' if status == issue.status), data: { status: status }
+        end.join.html_safe
       end
     end
   end

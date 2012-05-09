@@ -1,3 +1,6 @@
+/* Variables */
+$btnBackgroundHighlight: #E6E6E6;
+
 /* Espaciado */
 .margin-1em {
   margin-top: 1em;
@@ -15,4 +18,8 @@
 }
 .text-right {
   text-align: right;
+}
+/* Colors */
+ul.dropdown-menu a.active{
+  background-color: $btnBackgroundHighlight;
 }

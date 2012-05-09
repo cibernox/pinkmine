@@ -55,4 +55,15 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#bootstrap_breadcrumb' do
+    it "should render a breadcrumb for the given links" do
+      bootstrap_breadcrumb('a', 'b', 'c', 'd').should have_tag('ul.breadcrumb') do
+        with_tag('li', count: 4)
+        with_tag('li.active')
+        with_tag('span.divider', count: 3)
+        with_tag('span.divider', count: 3)
+      end
+    end
+  end
+
 end

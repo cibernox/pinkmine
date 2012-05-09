@@ -39,7 +39,11 @@ describe IssuesHelper do
       dropdown.should have_tag('.btn-group') do
         with_tag('a.btn.dropdown-toggle')
         with_tag('ul.dropdown-menu')
+        # As many links as possible status
         with_tag('.dropdown-menu a', count: Issue::VALID_STATUS.size)
+        # Only the one of the current status is active
+        with_tag('.dropdown-menu a.active', count: 1)
+        with_tag('.dropdown-menu a.active[data-status=in_progress]')
       end
     end
   end

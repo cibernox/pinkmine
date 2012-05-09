@@ -1,11 +1,6 @@
 .row-fluid
   .span12
-    %ul.breadcrumb
-      %li
-        = link_to 'Home', root_path
-        %span.divider /
-      %li.active
-        = link_to 'Projects', projects_path
+    = bootstrap_breadcrumb link_to('Home', root_path), link_to('Projects', projects_path)
     .row-fluid
       .span2
         .sidebar-nav.well
@@ -17,7 +12,7 @@
         %ul.thumbnails
           %li.span2= link_to image_tag('la_o.png'), projects.first, class: 'thumbnail'
           %li.span2= link_to image_tag('t.png'), '#', class: 'thumbnail'
-          %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
+          %li.span2= link_to image_tag('thoughtbot.png'), '#', class: 'thumbnail'
           %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
           %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
           %li.span2= link_to image_tag('256x256.gif'), '#', class: 'thumbnail'
