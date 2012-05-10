@@ -34,7 +34,6 @@ module IssuesHelper
     content_tag(:span, issue.priority, class: "label #{color_class}")
   end
 
-
   # Generates a dropdown button for select the status of the given issue
   def issue_status_dropdown(issue)
     link_content = issue.status + content_tag(:span, nil, class: 'caret')
